@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  postgresql-db:
+    container_name: oleix-postgresql-db
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgresql-db-volume:/data/postgres
+    env_file:
+      - docker.env
+    networks:
+      - oleix-platform
+
+volumes:
+  postgresql-db-volume:
+
+networks:
+  oleix-platform:

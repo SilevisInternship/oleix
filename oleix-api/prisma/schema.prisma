@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Advert {
+  createdAt     DateTime        @default(now())
+  advertId      String          @id @default(uuid())
+  author        User            @relation(fields: [authorId], references: [userId])
+  authorId      String          @db.VarChar(36)
+  title         String          @db.VarChar(255)
+  price         Decimal
+  description   String          @db.VarChar(5000)
+  localization  String          @db.VarChar(50)
+  negotiable    Boolean         @default(false)
+  phone         String          @db.VarChar(16)
+  ImageOnAdvert ImageOnAdvert[]
+}
+
+model ImageOnAdvert {
+  createdAt DateTime @default(now())
+  advertId  String   @db.VarChar(36)
+  advert    Advert   @relation(fields: [advertId], references: [advertId], onDelete: Cascade)
+  imageId   String   @db.VarChar(36)
+  image     Image    @relation(fields: [imageId], references: [imageId], onDelete: Cascade)
+
+  @@id([advertId, imageId])
+}
+
+model Image {
+  imageId       String          @id @default(uuid())
+  mimetype      String          @db.VarChar(255)
+  createdAt     DateTime        @default(now())
+  ImageOnAdvert ImageOnAdvert[]
+}
+
+model User {
+  userId        String      @id @default(uuid())
+  username      String      @unique @db.VarChar(40)
+  localization  String      @db.VarChar(80)
+  phone         String      @db.VarChar(16)
+  email         String      @db.VarChar(320)
+  passwordHash  String      @db.VarChar(255)
+  active        Boolean     @default(false)
+  activationUUID String?    @unique @db.Uuid @default(uuid())
+  adverts       Advert[]
+}
