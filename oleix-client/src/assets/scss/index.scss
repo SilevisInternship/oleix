@@ -1,0 +1,66 @@
+@import "bootstrap/scss/bootstrap";
+@import 'toastr/toastr.scss';
+@import './components/drop-zone.scss';
+@import './components/user-avatar.scss';
+@import './components/pagination.scss';
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.fs-7em {
+  font-size: .7em;
+}
+
+.fs-8em {
+  font-size: .8em;
+}
+
+.size-100-px {
+  width: 100px;
+  height: 100px;
+}
+
+.size-200-px {
+  width: 200px;
+  height: 200px;
+}
+
+.size-50-px {
+  width: 50px;
+  height: 50px;
+}
+
+.size-25-px {
+  width: 25px;
+  height: 25px;
+}
+
+.size-16-px {
+  width: 16px;
+  height: 16px;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.object-fit-contain {
+  object-fit: contain;
+}
+
+.z-index-2001 {
+  z-index: 2001;
+}
+
+.start-1-rem {
+  left: 1rem;
+}
+
+.top-1-rem {
+  top: 1rem;
+}
+
+.ml-auto{
+  margin-left: auto;
+}

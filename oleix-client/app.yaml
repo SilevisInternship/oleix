@@ -1,0 +1,10 @@
+env: standard
+runtime: nodejs16
+service: default
+
+handlers:
+  - url: /assets
+    static_dir: dist/assets
+  - url: .*
+    static_files: dist/index.html
+    upload: dist/index.html

@@ -1,0 +1,35 @@
+// Styles for GalleryView component.
+
+.gallery-view {
+  img {
+    border-radius: .25rem;
+    height: 450px;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next,
+  .carousel-indicators {
+    z-index: 3;
+  }
+
+  &.fullscreen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2000;
+    width: 100vw;
+    height: 100vh;
+    margin: 0 !important;
+    inset: 0;
+    background-color: #252525;
+
+    img {
+      object-fit: contain;
+      height: 100vh;
+      position: relative;
+    }
+  }
+}
